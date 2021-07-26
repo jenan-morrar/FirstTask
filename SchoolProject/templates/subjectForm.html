@@ -2,7 +2,7 @@
 
 {% block content %}
 <hr id="hLine">
-<h1 style="text-align:center;">Add/Update Subject</h1>
+<h1 style="text-align:center;">Add Subject</h1>
 <form action="{% url 'subjectForm' %}" method="post" style="height:300px;">{% csrf_token %}
     <div style="padding:10% 30%">
     <label>Subject Name:</label>
@@ -15,9 +15,28 @@
     <input type="text" name="SubjectClassRoom" PLACEHOLDER="Enter ClassRoom">
     <br><br>
     <input type="submit" name="AddSubject" value="Add">
-        <br><br>
-            <input type="submit" name="UpdateSubject" value="Update">
+    </div>
+</form>
 
+<h1 style="text-align:center;">Update Subject</h1>
+<form action="{% url 'subjectForm' %}" method="post" style="height:500px;">{% csrf_token %}
+    <div style="padding:10% 30%">
+    <label>Enter Subject Name To Update:</label>
+        <br><br>
+    <input type="text" name="UpdateSubjectName" PLACEHOLDER="Enter Subject Name">
+        <br><br>
+        <hr><br>
+        <label>Enter New Subject Name:</label>
+    <br><br>
+    <input type="text" name="NewSubjectName" PLACEHOLDER="Enter Subject Name">
+    <br><br>
+    <hr><br>
+    <label>Enter New Subject ClassRoom:</label>
+    <br><br>
+    <input type="text" name="NewSubjectClassRoom" PLACEHOLDER="Enter ClassRoom">
+    <br><br>
+
+            <input type="submit" name="UpdateSubject" value="Update">
     </div>
 </form>
 {% endblock content %}

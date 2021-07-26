@@ -2,19 +2,29 @@
 
 {% block content %}
 <hr id="hLine">
-<h1 style="text-align:center;">Add/Update ClassRoom</h1>
+<h1 style="text-align:center;">Add ClassRoom</h1>
 <form action="{% url 'classRoomForm' %}" method="post">{% csrf_token %}
     <div style="padding:10% 30%">
 <label>ClassRoom Name:</label>
-        <br>
-        <br>
-    <input type="text" name="RoomName" PLACEHOLDER="Enter ClassRoom Name">
-        <br>
-        <br>
-    <input type="submit" name="AddAlassRoom" value="Add">
         <br><br>
-            <input type="submit" name="UpdateClassRoom" value="Update">
-
+    <input type="text" name="RoomName" PLACEHOLDER="Enter ClassRoom Name">
+        <br><br>
+    <input type="submit" name="AddClassRoom" value="Add">
+    </div>
+</form>
+<h1 style="text-align:center;">Update ClassRoom</h1>
+<form action="{% url 'classRoomForm' %}" method="post" style="height:400px;">{% csrf_token %}
+    <div style="padding:10% 30%">
+        <label>Enter ClassRoom Name To Update:</label>
+        <br><br>
+    <input type="text" name="UpdateRoomName" PLACEHOLDER="Enter ClassRoom Name">
+        <br><br>
+        <hr><br>
+<label>Enter New ClassRoom Name:</label>
+        <br><br>
+    <input type="text" name="NewRoomName" PLACEHOLDER="Enter ClassRoom Name">
+        <br><br>
+    <input type="submit" name="UpdateClassRoom" value="Update">
     </div>
 </form>
 {% endblock content %}
