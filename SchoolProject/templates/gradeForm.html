@@ -4,8 +4,14 @@
 <hr id="hLine">
 <h1 style="text-align:center;">Add/Update Grade</h1>
 <form action="{% url 'gradeForm' %}" method="post">{% csrf_token %}
+    <div style="padding:10% 30%">
 <label>Grade Name:</label>
+    <br>
+    <br>
     <input type="text" name="GradeName">
-    <input type="submit" name="GradeButton">
+    <br>
+    <br>
+    <input type="submit" name="GradeButton" value="Add">
+        </div>
 </form>
 {% endblock content %}

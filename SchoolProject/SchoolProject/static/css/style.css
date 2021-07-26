@@ -257,3 +257,11 @@ margin-left:40%;
 #contactStyle{
 margin-left:40%
 }
+form{
+margin-left:32%;
+ margin-top:2%;
+ padding:2%;
+border:0.5pt solid black;
+width:400px;
+height:200px;
+}

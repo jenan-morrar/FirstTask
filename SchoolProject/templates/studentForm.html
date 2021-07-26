@@ -3,15 +3,28 @@
 {% block content %}
 <hr id="hLine">
 <h1 style="text-align:center;">Add/Update Student</h1>
-<form action="{% url 'studentForm' %}" method="post">{% csrf_token %}
+<form action="{% url 'studentForm' %}" method="post" style="height:500px;">{% csrf_token %}
+    <div style="padding:10% 30%">
     <label>Student Name:</label>
+    <br><br>
     <input type="text" name="StudentName">
+    <br><br>
+    <hr><br>
     <label> Student Birthdate:</label>
+    <br><br>
     <input type="date" name="StudentBirthdate">
+    <br><br>
+    <hr><br>
     <label>Student subject:</label>
+    <br><br>
     <input type="text" name="StudentSubject">
+    <br><br>
+    <hr><br>
     <label>Student Grade:</label>
+    <br><br>
     <input type="text" name="StudentGrade">
-    <input type="submit" name="studentButton">
+    <br><br>
+    <input type="submit" name="studentButton" value="Add">
+    </div>
 </form>
 {% endblock content %}

@@ -4,8 +4,14 @@
 <hr id="hLine">
 <h1 style="text-align:center;">Add/Update ClassRoom</h1>
 <form action="{% url 'classRoomForm' %}" method="post">{% csrf_token %}
+    <div style="padding:10% 30%">
 <label>ClassRoom Name:</label>
+        <br>
+        <br>
     <input type="text" name="RoomName">
-    <input type="submit" name="classRoomButton">
+        <br>
+        <br>
+    <input type="submit" name="classRoomButton" value="Add">
+    </div>
 </form>
 {% endblock content %}

@@ -3,12 +3,18 @@
 {% block content %}
 <hr id="hLine">
 <h1 style="text-align:center;">Add/Update Teacher</h1>
-<form action="{% url 'teacherForm' %}" method="post">{% csrf_token %}
+<form action="{% url 'teacherForm' %}" method="post" style="height:300px;">{% csrf_token %}
+    <div style="padding:10% 30%">
 <label>Teacher Name:</label>
+        <br><br>
     <input type="text" name="TeacherName">
+        <br><br>
+        <hr><br>
     <label>Teacher Subject:</label>
+        <br><br>
     <input type="text" name="TeacherSubject">
-
-    <input type="submit" name="TeacherButton">
+<br><br>
+    <input type="submit" name="TeacherButton" value="Add">
+    </div>
 </form>
 {% endblock content %}
