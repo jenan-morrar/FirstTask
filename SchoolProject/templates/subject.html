@@ -1,0 +1,17 @@
+{%extends 'basis.html'%}
+
+{% block content %}
+<hr id="hLine">
+<table>
+  <tr>
+    <th>Subject Name</th>
+    <th>Subject ClassRoom</th>
+  </tr>
+    {% for sub in subs %}
+  <tr>
+    <td>{{sub.subjectName}}</td>
+    <td>{{sub.classRoomName}}</td>
+  </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

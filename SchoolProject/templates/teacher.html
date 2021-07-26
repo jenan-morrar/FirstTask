@@ -1,0 +1,17 @@
+{%extends 'basis.html'%}
+
+{% block content %}
+<hr id="hLine">
+<table>
+  <tr>
+    <th>Teacher Name</th>
+    <th>Teacher Subjects</th>
+  </tr>
+    {% for tech in techs %}
+  <tr>
+    <td>{{tech.teacherName}}</td>
+    <td>{{tech.teacherSubjects}}</td>
+  </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

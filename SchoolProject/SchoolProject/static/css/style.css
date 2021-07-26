@@ -1,0 +1,259 @@
+body{
+    margin: 0;
+}
+
+#backgroundImage {
+    width: 100%;
+    height: 500;
+  }
+
+#headerImage {
+    border-radius: 50%;
+}
+
+.headerpart{
+    background-image: url('../images/background.jpg');
+    background-repeat: repeat-y;
+    background-size: 100%;
+}
+
+#header{
+    background-color: #465f7783;
+}
+
+li {
+    list-style-type: none;
+     margin: 0.25em 0;
+     text-shadow: 0 0 5px #f07979, 0 0 6px #0a3ecf;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+img {
+    max-width: 100%
+}
+
+.image {
+    flex-basis: 15%
+}
+
+.text {
+    flex-basis: 15%;
+    font-size: 20px;
+    color:white;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow:0 0 5px #f07979, 0 0 6px #0a3ecf;
+
+}
+
+.container2 {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.493);
+    padding: 20px 40px;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow:0 0 5px #f07979, 0 0 6px #0a3ecf;
+}
+
+.dropbtn {
+    padding: 8px 8px 8px 32px;
+    font-family: Arial, Verdana;
+    background:  url("menuIcon.png");
+    background-position: 30px 15px;
+    background-repeat: no-repeat;
+ }
+
+.fa {
+  padding: 20px;
+  font-size: 15px;
+  width: 10px;
+  height: 5px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Facebook */
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+.fa-linkedin {
+    background: #007bb5;
+    color: white;
+}
+.fa-instagram {
+    background: #125688;
+    color: white;
+}
+
+.socialMediaBar{
+    margin-top: 1%;
+    float:right;
+    margin-right: 5%;
+}
+
+#footerPart {
+    color: white;
+    flex-basis: 100%;
+    padding-left: 20%;
+    background-color: #0f1214;
+    border: 2pt solid  #0f1214;
+    margin-top: 5%;
+}
+
+#footerInfo{
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.aligning {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.main-navigation{
+      display: inline-block;
+      position: relative;
+      z-index: 100;
+      margin-left:2%;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ulStyle{
+      background-color: rgba(0, 128, 128, 0.329);
+}
+
+ul li {
+    display: block;
+    position: relative;
+    float: left;
+}
+li ul {
+     display: none;
+}
+
+ul li a {
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+  white-space: nowrap;
+  color: black;
+}
+
+ul li a:hover {
+     background: #cceeff;
+}
+li:hover > ul {
+    display: block;
+    position: absolute;
+}
+
+  li:hover li {
+      float: none;
+}
+
+  li:hover a {
+       background: rgba(59, 106, 124, 0.329);
+}
+
+  li:hover li a:hover {
+      background: #cedadd88;
+      color:white;
+}
+
+  .main-navigation li ul li {
+       border-top: 0;
+}
+  ul ul ul {
+    left: 100%;
+    top: 0;
+}
+
+  ul:before, ul:after {
+  content: " ";
+  display: table;
+}
+
+ul:after {
+     clear: both;
+}
+
+#sign1{
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px;
+}
+#sign2{
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px;
+}
+#sign3{
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin-left:10%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #cceeff;
+}
+#hLine{
+margin-bottom:3%;
+}
+#aboutPage{
+width:700px;
+}
+#aboutTitle{
+margin-left:30%;
+}
+#contactTitle{
+margin-left:40%;
+}
+#contactStyle{
+margin-left:40%
+}

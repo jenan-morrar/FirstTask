@@ -1,0 +1,22 @@
+{%extends 'basis.html'%}
+
+{% block content %}
+<hr id="hLine">
+<table>
+  <tr>
+    <th>Student Name</th>
+    <th>Student Birthday</th>
+    <th>Student Subjects </th>
+      <th>Student Grade </th>
+  </tr>
+    {% for stud in studs %}
+  <tr>
+    <td>{{stud.studentName}}</td>
+    <td>{{stud.birthdate}}</td>
+    <td>{{stud.studentSubjects}}</td>
+    <td>{{stud.studentGrade}}</td>
+  </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+<!--{%extends 'basis.html'%}
+
+{% block content %}
+<hr id="hLine">
+<form action="{% url 'forms' %}" method="post">{% csrf_token %}
+<label>ClassRoom Name:</label>
+    <input type="text" name="RoomName">
+    <input type="submit" name="classRoomButton">
+</form>
+
+<form action="{% url 'forms' %}" method="post">{% csrf_token %}
+<label>Grade Name:</label>
+    <input type="text" name="GradeName">
+    <input type="submit" name="GradeButton">
+</form>
+<h1>Forms</h1>
+{% endblock content %}-->

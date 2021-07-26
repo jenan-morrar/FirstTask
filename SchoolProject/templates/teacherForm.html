@@ -1,0 +1,14 @@
+{%extends 'basis.html'%}
+
+{% block content %}
+<hr id="hLine">
+<h1 style="text-align:center;">Add/Update Teacher</h1>
+<form action="{% url 'teacherForm' %}" method="post">{% csrf_token %}
+<label>Teacher Name:</label>
+    <input type="text" name="TeacherName">
+    <label>Teacher Subject:</label>
+    <input type="text" name="TeacherSubject">
+
+    <input type="submit" name="TeacherButton">
+</form>
+{% endblock content %}

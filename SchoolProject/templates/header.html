@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<section class="header">
+    <header class="headerpart">
+        <div class="container" id="header">
+            <div class="image">
+                {% load static %}
+                <img src="{% static 'images/logo.png' %}" alt="Logo image" height="200" width="200" id="heade">
+            </div>
+            <div class="text">
+                <p id="headerInfo">Al-QUDS <br> HIGH SCHOOL</p>
+            </div>
+        </div>
+    </header>
+    <ul class="main-navigation">
+        <li><a href="#">Menu <i class="fa fa-caret-down" id="sign1"></i></a>
+            <ul class="ulStyle">
+                <li><a href="#">Add/Update <i class="fa fa-caret-down" id="sign2"></i></a>
+                    <ul class="ulStyle">
+                        <li><a href="{% url 'studentForm' %}">Students</a></li>
+                        <li><a href="{% url 'teacherForm' %}">Teachers</a></li>
+                        <li><a href="{% url 'classRoomForm' %}">ClassRooms</a></li>
+                        <li><a href="{% url 'subjectForm' %}">Subjects</a></li>
+                        <li><a href="{% url 'gradeForm' %}">Grads</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">List <i class="fa fa-caret-down" id="sign3"></i></a>
+                    <ul class="ulStyle">
+                        <li><a href="{% url 'student' %}">Students</a></li>
+                        <li><a href="{% url 'teacher' %}">Teachers</a></li>
+                        <li><a href="{% url 'classRoom' %}">ClassRooms</a></li>
+                        <li><a href="{% url 'subject' %}">Subjects</a></li>
+                        <li><a href="{% url 'grade' %}">Grads</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'news' %}">News</a></li>
+    </ul>
+
+    <div class="socialMediaBar">
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-instagram"></a>
+    </div>
+</section>
+</body>
+</html>

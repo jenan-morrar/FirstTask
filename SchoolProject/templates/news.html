@@ -1,0 +1,23 @@
+{%extends 'basis.html'%}
+
+{% block content %}
+<hr id="hLine">
+    <section class="main">
+        <div class="container2">
+           {% load static  %}
+            <img src="{% static 'images/image2.jpg' %}" alt="background Image">
+            <div class="centered">
+                <p>We Have SUMMER CAMP Next month, the Registration will start at Tuesday 9/9/2021 .</p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="container2">
+           {% load static  %}
+            <img src="{% static 'images/image3.jpg' %}" alt="background Image">
+            <div class="centered">
+                <p>We Have Running Competition Next week, the Registration will start at tomorrow 8/8/2021 .</p>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,11 @@
+{%extends 'basis.html'%}
+
+{% block content %}
+<hr id="hLine">
+<h1 style="text-align:center;">Add/Update Grade</h1>
+<form action="{% url 'gradeForm' %}" method="post">{% csrf_token %}
+<label>Grade Name:</label>
+    <input type="text" name="GradeName">
+    <input type="submit" name="GradeButton">
+</form>
+{% endblock content %}

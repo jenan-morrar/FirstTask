@@ -1,0 +1,15 @@
+{%extends 'basis.html'%}
+
+{% block content %}
+<hr id="hLine">
+<table>
+  <tr>
+    <th>Grade Name</th>
+  </tr>
+    {% for grd in grds %}
+  <tr>
+    <td>{{grd.gradeName}}</td>
+  </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

@@ -1,0 +1,13 @@
+{%extends 'basis.html'%}
+
+{% block content %}
+<hr id="hLine">
+<h1 style="text-align:center;">Add/Update Subject</h1>
+<form action="{% url 'subjectForm' %}" method="post">{% csrf_token %}
+    <label>Subject Name:</label>
+    <input type="text" name="SubjectName">
+    <label>Subject ClassRoom:</label>
+    <input type="text" name="SubjectClassRoom">
+    <input type="submit" name="SubjectButton">
+</form>
+{% endblock content %}

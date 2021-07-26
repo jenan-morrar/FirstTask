@@ -1,0 +1,11 @@
+{%extends 'basis.html'%}
+
+{% block content %}
+<hr id="hLine">
+<h1 style="text-align:center;">Add/Update ClassRoom</h1>
+<form action="{% url 'classRoomForm' %}" method="post">{% csrf_token %}
+<label>ClassRoom Name:</label>
+    <input type="text" name="RoomName">
+    <input type="submit" name="classRoomButton">
+</form>
+{% endblock content %}
