@@ -37,23 +37,28 @@ def grade (request):
 
 # For Add/Update entities
 def studentForm (request):
-    studentInfo = Student.objects.create (studentName=request.POST.get('StudentName'), birthdate=request.POST.get('Birthdate'), studentSubjects=request.POST.get('StudentSubject'), studentGrade=request.POST.get('StudentGrade'))
+    if request.method == "POST":
+       studentInfo = Student.objects.create (studentName=request.POST.get('StudentName'), birthdate=request.POST.get('Birthdate'), studentSubjects=request.POST.get('StudentSubject'), studentGrade=request.POST.get('StudentGrade'))
     return  render(request,'studentForm.html')
 
 def teacherForm (request):
-    teacherInfo = Teacher.objects.create (teacherName=request.POST.get('TeacherName'), teacherSubjects=request.POST.get('TeacherSubjects'))
+    if request.method == "POST":
+       teacherInfo = Teacher.objects.create (teacherName=request.POST.get('TeacherName'), teacherSubjects=request.POST.get('TeacherSubjects'))
     return  render(request,'teacherForm.html')
 
 def subjectForm (request):
-    subjectInfo = Subject.objects.create (subjectName=request.POST.get('SubjectName'),classRoomName=request.POST.get('ClassRoomName'))
+    if request.method == "POST":
+      subjectInfo = Subject.objects.create (subjectName=request.POST.get('SubjectName'),classRoomName=request.POST.get('ClassRoomName'))
     return  render(request,'subjectForm.html')
 
 def classRoomForm (request):
-    roomName = ClassRoom.objects.create(classRoomName=request.POST.get('RoomName'))
+    if request.method == "POST":
+      roomName = ClassRoom.objects.create(classRoomName=request.POST.get('RoomName'))
     return render(request, 'classRoomForm.html')
 
 def gradeForm (request):
-    gradeName = Grade.objects.create(gradeName=request.POST.get('GradeName'))
+    if request.method == "POST":
+      gradeName = Grade.objects.create(gradeName=request.POST.get('GradeName'))
     return render(request, 'gradeForm.html')
 
 
