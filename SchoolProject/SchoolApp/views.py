@@ -64,13 +64,3 @@ def gradeForm (request):
     return render(request, 'gradeForm.html')
 
 
-"""def forms (request):
-    if request.method == 'POST':
-        if 'classRoomButton' in request.POST:
-            roomName = ClassRoom.objects.create(classRoomName= request.POST.get('RoomName'))
-            return render(request,'forms.html')
-        if 'GradeButton' in request.POST:
-            gradeName = Grade.objects.create(gradeName=request.POST.get('GradeName'))
-            return render(request,'forms.html')
-    return render(request,'forms.html')"""
-
