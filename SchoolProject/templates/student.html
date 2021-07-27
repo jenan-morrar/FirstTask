@@ -14,7 +14,7 @@
     <td>{{stud.studentName}}</td>
     <td>{{stud.birthdate}}</td>
     <td>
-      {% for subject in stud.studentSubjects_set.all %}
+      {% for subject in stud.studentSubjects.all %}
       {{subject.subjectName}}
       {% endfor %}
     </td>

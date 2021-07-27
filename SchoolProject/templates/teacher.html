@@ -11,7 +11,7 @@
   <tr>
     <td>{{tech.teacherName}}</td>
     <td>
-      {% for subject in tech.teacherSubjects_set.all %}
+      {% for subject in tech.teacherSubjects.all %}
       {{subject}}
       {% endfor %}
     </td>
