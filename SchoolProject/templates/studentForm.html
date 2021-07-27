@@ -5,55 +5,73 @@
 <h1 style="text-align:center;">Add Student</h1>
 <form action="{% url 'studentForm' %}" method="post" style="height:500px;">{% csrf_token %}
     <div style="padding:10% 30%">
-    <label>Student Name:</label>
-    <br><br>
-    <input type="text" name="StudentName" PLACEHOLDER="Enter Student Name">
-    <br><br>
-    <hr><br>
-    <label> Student Birthdate:</label>
-    <br><br>
-    <input type="date" name="StudentBirthdate">
-    <br><br>
-    <hr><br>
-    <label>Student subject:</label>
-    <br><br>
-    <input type="text" name="StudentSubject" PLACEHOLDER="Enter Student Subject">
-    <br><br>
-    <hr><br>
-    <label>Student Grade:</label>
-    <br><br>
-    <input type="text" name="StudentGrade" PLACEHOLDER="Enter Student Grade">
-    <br><br>
-    <input type="submit" name="AddStudent" value="Add">
+        <label>Student Name:</label>
+        <br><br>
+        <input type="text" name="StudentName" PLACEHOLDER="Enter Student Name">
+        <br><br>
+        <hr>
+        <br>
+        <label> Student Birthdate:</label>
+        <br><br>
+        <input type="date" name="StudentBirthdate">
+        <br><br>
+        <hr>
+        <br>
+        <label>Student subject:</label>
+        <br><br>
+        <select name="StudentSubject">
+            <option disabled="true" selected>-- Select Student Subject</option>
+            {% for subject in subs %}
+            <option>{{subject.subjectName}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <hr>
+        <br>
+        <label>Student Grade:</label>
+        <br><br>
+
+        <select name="StudentGrade">
+            <option disabled="true" selected>-- Select Student Grade --</option>
+            {% for grade in grds %}
+            <option value="{{grade.gradeName}}">{{grade.gradeName}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" name="AddStudent" value="Add">
     </div>
 </form>
 <h1 style="text-align:center;">Update Student</h1>
 <form action="{% url 'studentForm' %}" method="post" style="height:700px;">{% csrf_token %}
     <div style="padding:10% 30%">
         <label>Enter Student Name To Update:</label>
-    <br><br>
-    <input type="text" name="UpdateStudentName" PLACEHOLDER="Enter Student Name">
         <br><br>
-        <hr><br>
-    <label>Enter New Student Name:</label>
-    <br><br>
-    <input type="text" name="NewStudentName" PLACEHOLDER="Enter Student Name">
-    <br><br>
-    <hr><br>
-    <label> Enter New Student Birthdate:</label>
-    <br><br>
-    <input type="date" name="NewStudentBirthdate">
-    <br><br>
-    <hr><br>
-    <label>Enter New Student subject:</label>
-    <br><br>
-    <input type="text" name="NewStudentSubject" PLACEHOLDER="Enter Student Subject">
-    <br><br>
-    <hr><br>
-    <label>Enter New Student Grade:</label>
-    <br><br>
-    <input type="text" name="NewStudentGrade" PLACEHOLDER="Enter Student Grade">
-    <br><br>
+        <input type="text" name="UpdateStudentName" PLACEHOLDER="Enter Student Name">
+        <br><br>
+        <hr>
+        <br>
+        <label>Enter New Student Name:</label>
+        <br><br>
+        <input type="text" name="NewStudentName" PLACEHOLDER="Enter Student Name">
+        <br><br>
+        <hr>
+        <br>
+        <label> Enter New Student Birthdate:</label>
+        <br><br>
+        <input type="date" name="NewStudentBirthdate">
+        <br><br>
+        <hr>
+        <br>
+        <label>Enter New Student subject:</label>
+        <br><br>
+        <input type="text" name="NewStudentSubject" PLACEHOLDER="Enter Student Subject">
+        <br><br>
+        <hr>
+        <br>
+        <label>Enter New Student Grade:</label>
+        <br><br>
+        <input type="text" name="NewStudentGrade" PLACEHOLDER="Enter Student Grade">
+        <br><br>
         <input type="submit" name="UpdateStudent" value="Update">
     </div>
 </form>

@@ -5,38 +5,45 @@
 <h1 style="text-align:center;">Add Subject</h1>
 <form action="{% url 'subjectForm' %}" method="post" style="height:300px;">{% csrf_token %}
     <div style="padding:10% 30%">
-    <label>Subject Name:</label>
-    <br><br>
-    <input type="text" name="SubjectName" PLACEHOLDER="Enter Subject Name">
-    <br><br>
-    <hr><br>
-    <label>Subject ClassRoom:</label>
-    <br><br>
-    <input type="text" name="SubjectClassRoom" PLACEHOLDER="Enter ClassRoom">
-    <br><br>
-    <input type="submit" name="AddSubject" value="Add">
+        <label>Subject Name:</label>
+        <br><br>
+        <input type="text" name="SubjectName" PLACEHOLDER="Enter Subject Name">
+        <br><br>
+        <hr><br>
+        <label>Subject ClassRoom:</label>
+        <br><br>
+        <select name="SubjectClassRoom">
+            <option disabled="true" selected>-- Select Subject ClassRoom --</option>
+            {% for room in clsRoom %}
+            <option >{{room.classRoomName}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" name="AddSubject" value="Add">
     </div>
 </form>
 
 <h1 style="text-align:center;">Update Subject</h1>
 <form action="{% url 'subjectForm' %}" method="post" style="height:500px;">{% csrf_token %}
     <div style="padding:10% 30%">
-    <label>Enter Subject Name To Update:</label>
+        <label>Enter Subject Name To Update:</label>
         <br><br>
-    <input type="text" name="UpdateSubjectName" PLACEHOLDER="Enter Subject Name">
+        <input type="text" name="UpdateSubjectName" PLACEHOLDER="Enter Subject Name">
         <br><br>
-        <hr><br>
+        <hr>
+        <br>
         <label>Enter New Subject Name:</label>
-    <br><br>
-    <input type="text" name="NewSubjectName" PLACEHOLDER="Enter Subject Name">
-    <br><br>
-    <hr><br>
-    <label>Enter New Subject ClassRoom:</label>
-    <br><br>
-    <input type="text" name="NewSubjectClassRoom" PLACEHOLDER="Enter ClassRoom">
-    <br><br>
+        <br><br>
+        <input type="text" name="NewSubjectName" PLACEHOLDER="Enter Subject Name">
+        <br><br>
+        <hr>
+        <br>
+        <label>Enter New Subject ClassRoom:</label>
+        <br><br>
+        <input type="text" name="NewSubjectClassRoom" PLACEHOLDER="Enter ClassRoom">
+        <br><br>
 
-            <input type="submit" name="UpdateSubject" value="Update">
+        <input type="submit" name="UpdateSubject" value="Update">
     </div>
 </form>
 {% endblock content %}
