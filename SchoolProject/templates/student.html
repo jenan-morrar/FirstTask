@@ -13,8 +13,14 @@
   <tr>
     <td>{{stud.studentName}}</td>
     <td>{{stud.birthdate}}</td>
-    <td>{{stud.studentSubjects}}</td>
-    <td>{{stud.studentGrade}}</td>
+    <td>
+      {% for subject in stud.studentSubjects_set.all %}
+      {{subject.subjectName}}
+      {% endfor %}
+    </td>
+    <td>
+      {{stud.studentGrade}}
+    </td>
   </tr>
     {% endfor %}
 </table>

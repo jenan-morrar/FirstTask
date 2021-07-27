@@ -20,8 +20,10 @@ def student (request):
     return  render(request,'student.html',{'studs':studs})
 
 def teacher (request):
-    techs= Teacher.objects.all()
-    return  render(request,'teacher.html',{'techs':techs})
+    techs = Teacher.objects.all()
+    #teacherSubjects = Subject.objects.all()
+    context = {'techs':techs}
+    return  render(request,'teacher.html',context)
 
 def subject (request):
     subs = Subject.objects.all()

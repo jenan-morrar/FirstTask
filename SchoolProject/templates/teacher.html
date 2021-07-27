@@ -10,7 +10,11 @@
     {% for tech in techs %}
   <tr>
     <td>{{tech.teacherName}}</td>
-    <td>{{tech.teacherSubjects}}</td>
+    <td>
+      {% for subject in tech.teacherSubjects_set.all %}
+      {{subject}}
+      {% endfor %}
+    </td>
   </tr>
     {% endfor %}
 </table>
