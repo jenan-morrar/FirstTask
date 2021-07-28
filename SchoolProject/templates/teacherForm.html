@@ -5,16 +5,23 @@
 <h1 style="text-align:center;">Add Teacher</h1>
 <form action="{% url 'teacherForm' %}" method="post" style="height:300px;">{% csrf_token %}
     <div style="padding:10% 30%">
-<label>Teacher Name:</label>
+        <label>Teacher Name:</label>
         <br><br>
-    <input type="text" name="TeacherName" PLACEHOLDER="Enter Teacher Name">
+        <input type="text" name="TeacherName" PLACEHOLDER="Enter Teacher Name">
         <br><br>
-        <hr><br>
-    <label>Teacher Subject:</label>
+        <hr>
+        <br>
+        <label>Teacher Subject:</label>
         <br><br>
-    <input type="text" name="TeacherSubject" PLACEHOLDER="Enter Teacher Subject">
-<br><br>
-    <input type="submit" name="TeacherButton" value="Add">
+        <select name="StudentSubject">
+            <option disabled="true" selected>-- Select Student Subject</option>
+            {% for subject in subs %}
+            <option>{{subject.subjectName}}</option>
+            {% endfor %}
+        </select>
+        <!--<input type="text" name="TeacherSubject" PLACEHOLDER="Enter Teacher Subject">-->
+        <br><br>
+        <input type="submit" name="TeacherButton" value="Add">
     </div>
 </form>
 
@@ -23,19 +30,21 @@
     <div style="padding:10% 30%">
         <label>Enter Teacher Name To Update:</label>
         <br><br>
-    <input type="text" name="UpdateTeacherName" PLACEHOLDER="Enter Teacher Name">
+        <input type="text" name="UpdateTeacherName" PLACEHOLDER="Enter Teacher Name">
         <br><br>
-        <hr><br>
-<label>Enter New Teacher Name:</label>
+        <hr>
+        <br>
+        <label>Enter New Teacher Name:</label>
         <br><br>
-    <input type="text" name="NewTeacherName" PLACEHOLDER="Enter Teacher Name">
+        <input type="text" name="NewTeacherName" PLACEHOLDER="Enter Teacher Name">
         <br><br>
-        <hr><br>
-    <label>Enter New Teacher Subject:</label>
+        <hr>
+        <br>
+        <label>Enter New Teacher Subject:</label>
         <br><br>
-    <input type="text" name="NewTeacherSubject" PLACEHOLDER="Enter Teacher Subject">
-<br><br>
-            <input type="submit" name="UpdateTeacher" value="Update">
+        <input type="text" name="NewTeacherSubject" PLACEHOLDER="Enter Teacher Subject">
+        <br><br>
+        <input type="submit" name="UpdateTeacher" value="Update">
     </div>
 </form>
 {% endblock content %}

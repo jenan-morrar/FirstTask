@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Subject,Student,ClassRoom,Teacher,Grade
+from .forms import gradeForms
+from django.contrib import messages
 
 def index (request):
     return  render(request,'index.html')
@@ -48,9 +50,10 @@ def studentForm (request):
     return  render(request,'studentForm.html',context)
 
 def teacherForm (request):
+    subs = Subject.objects.all()
     if request.method == "POST":
        teacherInfo = Teacher.objects.create (teacherName=request.POST.get('TeacherName'), teacherSubjects=request.POST.get('TeacherSubjects'))
-    return  render(request,'teacherForm.html')
+    return  render(request,'teacherForm.html', {'subs':subs})
 
 def subjectForm (request):
     clsRoom = ClassRoom.objects.all()
@@ -67,7 +70,16 @@ def classRoomForm (request):
 
 def gradeForm (request):
     if request.method == "POST":
-      gradeName = Grade.objects.create(gradeName=request.POST.get('GradeName'))
+        if request.POST.get('AddGrade'):
+           gradeName = Grade.objects.create(gradeName=request.POST.get('GradeName'))
+           return render(request, 'gradeForm.html')
+        elif request.POST.get('UpdateGrade'):
+              grdName = Grade.objects.get(gradeName='UpdateGradeName')
+              form = gradeForms(request.POST,instance=grdName)
+              if form.is_valid():
+                  form.save()
+                  messages.success(request,"Grade Updated Successfully")
+                  return render(request, 'gradeForm.html', {'grdName': grdName})
     return render(request, 'gradeForm.html')
 
 
