@@ -5,26 +5,32 @@
 <h1 style="text-align:center;">Add Grade</h1>
 <form action="{% url 'gradeForm' %}" method="post">{% csrf_token %}
     <div style="padding:10% 30%">
-<label>Grade Name:</label>
-    <br><br>
-    <input type="text" name="GradeName" PLACEHOLDER="Enter Grade Name">
-    <br><br>
-    <input type="submit" name="AddGrade"  value="Add">
-        </div>
+        <label>Grade Name:</label>
+        <br><br>
+        <input type="text" name="GradeName" PLACEHOLDER="Enter Grade Name">
+        <br><br>
+        <input type="submit" name="AddGrade" value="Add">
+    </div>
 </form>
 <h1 style="text-align:center;">Update Grade</h1>
 <form action="{% url 'gradeForm' %}" method="post" style="height:400px;">{% csrf_token %}
     <div style="padding:10% 30%">
         <label>Enter Grade Name To Update:</label>
-    <br><br>
-    <input type="text" name="UpdateGradeName" PLACEHOLDER="Enter Grade Name">
         <br><br>
-        <hr><br>
-<label>Enter New Grade Name:</label>
-    <br><br>
-    <input type="text" name="NewGradeName" PLACEHOLDER="Enter Grade Name">
-    <br><br>
-            <input type="submit" name="UpdateGrade"  value="Update">
-        </div>
+        <input type="text" name="UpdateGradeName" PLACEHOLDER="Enter Grade Name" required>
+        <br><br>
+        <!--<input type="submit" name="search" value="Search">-->
+        <hr>
+        <br>
+        <label>Enter New Grade Name:</label>
+        <br><br>
+        <label>{{ grdName.gradeName }}</label>
+        <input type="text" name="NewGradeName" PLACEHOLDER=>
+        <br><br>
+        <input type="submit" name="UpdateGrade" value="Update">
+        {% if messages %}
+        <h3 style="color:green;">{{ messages }}</h3>
+        {% endif %}
+    </div>
 </form>
 {% endblock content %}
