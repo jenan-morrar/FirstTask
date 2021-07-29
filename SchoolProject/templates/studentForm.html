@@ -64,13 +64,25 @@
         <br>
         <label>Enter New Student subject:</label>
         <br><br>
-        <input type="text" name="NewStudentSubject" PLACEHOLDER="Enter Student Subject">
+        <select name="NewStudentSubject">
+            <option disabled="true" selected>-- Select New Student Subject</option>
+            {% for subject in subs %}
+            <option>{{subject.subjectName}}</option>
+            {% endfor %}
+        </select>
+        <!--<input type="text" name="NewStudentSubject" PLACEHOLDER="Enter Student Subject">-->
         <br><br>
         <hr>
         <br>
         <label>Enter New Student Grade:</label>
         <br><br>
-        <input type="text" name="NewStudentGrade" PLACEHOLDER="Enter Student Grade">
+       <select name="NewStudentGrade">
+            <option disabled="true" selected>-- Select New Student Grade --</option>
+            {% for grade in grds %}
+            <option value="{{grade.gradeName}}">{{grade.gradeName}}</option>
+            {% endfor %}
+        </select>
+        <!--<input type="text" name="NewStudentGrade" PLACEHOLDER="Enter Student Grade">-->
         <br><br>
         <input type="submit" name="UpdateStudent" value="Update">
     </div>
