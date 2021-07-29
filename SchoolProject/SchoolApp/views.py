@@ -41,25 +41,38 @@ def grade (request):
 
 # For Add/Update entities
 def studentForm (request):
-    studs = Student.objects.all()
     subs = Subject.objects.all()
     grds = Grade.objects.all()
-    context = {'studs': studs, 'subs': subs, 'grds': grds}
+    context = {'subs': subs, 'grds': grds}
     if request.method == "POST":
-        studentInfo = Student.objects.create (studentName=request.POST.get('StudentName'), birthdate=request.POST.get('Birthdate'), studentSubjects=request.POST.get('StudentSubject'), studentGrade=request.POST.get('StudentGrade'))
+        #studentInfo = Student.objects.create (studentName=request.POST.get('StudentName'), birthdate=request.POST.get('Birthdate'), studentSubjects=request.POST.get('StudentSubject'), studentGrade=request.POST.get('StudentGrade'))
+        studentGrade = request.POST.get('StudentGrade')
+        studentGradeObject = Grade.objects.get(gradeName=studentGrade)
+        studentInfo = Student.objects.create(studentName=request.POST.get('StudentName'), birthdate=request.POST.get('StudentBirthdate'),studentGrade=studentGradeObject )
+        studentSubject=request.POST.get('StudentSubject')
+        studentSubjectObject = Subject.objects.get(subjectName=studentSubject)
+        studentInfo.studentSubjects.add(studentSubjectObject)
+        #studentInfo.studentGrade.add(studentGradeObject)
     return  render(request,'studentForm.html',context)
 
 def teacherForm (request):
     subs = Subject.objects.all()
     if request.method == "POST":
-       teacherInfo = Teacher.objects.create (teacherName=request.POST.get('TeacherName'), teacherSubjects=request.POST.get('TeacherSubjects'))
+       #teacherInfo = Teacher.objects.create (teacherName=request.POST.get('TeacherName'), teacherSubjects=request.POST.get('TeacherSubjects'))
+       teacherInfo = Teacher.objects.create(teacherName=request.POST.get('TeacherName'))
+       subject = request.POST.get('TeacherSubjects')
+       subjectObject = Subject.objects.get(subjectName=subject)
+       teacherInfo.teacherSubjects.add(subjectObject)
     return  render(request,'teacherForm.html', {'subs':subs})
 
 def subjectForm (request):
     clsRoom = ClassRoom.objects.all()
     if request.method == "POST":
-      subjectInfo = Subject.objects.create (subjectName=request.POST.get('SubjectName'),classRoomName=request.POST.get('ClassRoomName'))
-      print(request.POST.get('ClassRoomName'))
+      subjectInfo = Subject.objects.create (subjectName=request.POST.get('SubjectName'))
+      subjectClassRoom = request.POST.get('SubjectClassRoom')
+      subjectClassRoomObject = ClassRoom.objects.get(classRoomName=subjectClassRoom)
+      subjectInfo = Subject.objects.create(subjectName=request.POST.get('SubjectName'),classRoomName=subjectClassRoomObject)
+      #subjectInfo.classRoomName.add(subjectClassRoomObject)
 
     return  render(request,'subjectForm.html',{'clsRoom':clsRoom})
 
