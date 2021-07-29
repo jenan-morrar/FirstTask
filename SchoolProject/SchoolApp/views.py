@@ -46,13 +46,13 @@ def studentForm (request):
     context = {'subs': subs, 'grds': grds}
     if request.method == "POST":
         #studentInfo = Student.objects.create (studentName=request.POST.get('StudentName'), birthdate=request.POST.get('Birthdate'), studentSubjects=request.POST.get('StudentSubject'), studentGrade=request.POST.get('StudentGrade'))
-        studentInfo = Student.objects.create(studentName=request.POST.get('StudentName'), birthdate=request.POST.get('StudentBirthdate'))
         studentGrade = request.POST.get('StudentGrade')
         studentGradeObject = Grade.objects.get(gradeName=studentGrade)
+        studentInfo = Student.objects.create(studentName=request.POST.get('StudentName'), birthdate=request.POST.get('StudentBirthdate'),studentGrade=studentGradeObject )
         studentSubject=request.POST.get('StudentSubject')
         studentSubjectObject = Subject.objects.get(subjectName=studentSubject)
         studentInfo.studentSubjects.add(studentSubjectObject)
-        studentInfo.studentGrade.add(studentGradeObject)
+        #studentInfo.studentGrade.add(studentGradeObject)
     return  render(request,'studentForm.html',context)
 
 def teacherForm (request):
@@ -71,7 +71,8 @@ def subjectForm (request):
       subjectInfo = Subject.objects.create (subjectName=request.POST.get('SubjectName'))
       subjectClassRoom = request.POST.get('SubjectClassRoom')
       subjectClassRoomObject = ClassRoom.objects.get(classRoomName=subjectClassRoom)
-      subjectInfo.classRoomName.add(subjectClassRoomObject)
+      subjectInfo = Subject.objects.create(subjectName=request.POST.get('SubjectName'),classRoomName=subjectClassRoomObject)
+      #subjectInfo.classRoomName.add(subjectClassRoomObject)
 
     return  render(request,'subjectForm.html',{'clsRoom':clsRoom})
 
