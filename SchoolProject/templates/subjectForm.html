@@ -40,7 +40,13 @@
         <br>
         <label>Enter New Subject ClassRoom:</label>
         <br><br>
-        <input type="text" name="NewSubjectClassRoom" PLACEHOLDER="Enter ClassRoom">
+        <select name="NewSubjectClassRoom">
+            <option disabled="true" selected>-- Select Subject ClassRoom --</option>
+            {% for room in clsRoom %}
+            <option >{{room.classRoomName}}</option>
+            {% endfor %}
+        </select>
+        <!--<input type="text" name="NewSubjectClassRoom" PLACEHOLDER="Enter ClassRoom">-->
         <br><br>
 
         <input type="submit" name="UpdateSubject" value="Update">

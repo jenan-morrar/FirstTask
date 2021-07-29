@@ -13,15 +13,15 @@
         <br>
         <label>Teacher Subject:</label>
         <br><br>
-        <select name="StudentSubject">
-            <option disabled="true" selected>-- Select Student Subject</option>
+        <select name="TeacherSubjects">
+            <option disabled="true" selected>-- Select Teacher Subject</option>
             {% for subject in subs %}
             <option>{{subject.subjectName}}</option>
             {% endfor %}
         </select>
         <!--<input type="text" name="TeacherSubject" PLACEHOLDER="Enter Teacher Subject">-->
         <br><br>
-        <input type="submit" name="TeacherButton" value="Add">
+        <input type="submit" name="AddTeacher" value="Add">
     </div>
 </form>
 
@@ -42,7 +42,13 @@
         <br>
         <label>Enter New Teacher Subject:</label>
         <br><br>
-        <input type="text" name="NewTeacherSubject" PLACEHOLDER="Enter Teacher Subject">
+        <select name="NewTeacherSubject">
+            <option disabled="true" selected>-- Select Teacher Subject</option>
+            {% for subject in subs %}
+            <option>{{subject.subjectName}}</option>
+            {% endfor %}
+        </select>
+        <!--<input type="text" name="NewTeacherSubject" PLACEHOLDER="Enter Teacher Subject">-->
         <br><br>
         <input type="submit" name="UpdateTeacher" value="Update">
     </div>
