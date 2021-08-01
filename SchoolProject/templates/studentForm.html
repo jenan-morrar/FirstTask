@@ -2,8 +2,37 @@
 
 {% block content %}
 <hr id="hLine">
-<h1 style="text-align:center;">Add Student</h1>
-<form action="{% url 'studentForm' %}" method="post" style="height:500px;">{% csrf_token %}
+{%for message in messages %}
+{%if "add" in message.tags %}
+<p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
+    {% if message.tags == "add success" %}
+    <i class="fa fa-check-circle" style="font-size:25px; color:green;"></i>
+    {% endif %}
+    {% if message.tags == "add error" %}
+    <i class="fa fa-close" style="font-size:25px;"></i>
+    {% endif %}
+    {{message}} </p> {# show signup error message #}
+{%endif%}
+{%endfor%}
+
+{%for message in messages %}
+{%if "update" in message.tags %}
+<p>{{message.tags}}</p>
+<p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
+    {% if message.tags == "add success" %}
+    <i class="fa fa-check-circle" style="font-size:25px; color:green;"></i>
+    {% endif %}
+    {% if message.tags == "add error" %}
+    <i class="fa fa-close" style="font-size:25px;"></i>
+    {% endif %}
+    {{message}} </p> {# show signup error message #}
+{%endif%}
+{%endfor%}
+
+
+<div style="float:left;margin:3%;">
+<h1 style="text-align:center;margin-left:50%;">Add Student</h1>
+<form action="{% url 'studentForm' %}" method="post" style="height:900px;">{% csrf_token %}
     <div style="padding:10% 30%">
         <label>Student Name:</label>
         <br><br>
@@ -20,7 +49,7 @@
         <label>Student subject:</label>
         <br><br>
         <select name="StudentSubject">
-            <option disabled="true" selected>-- Select Student Subject</option>
+            <option disabled="true" selected>Select Subject</option>
             {% for subject in subs %}
             <option>{{subject.subjectName}}</option>
             {% endfor %}
@@ -32,59 +61,63 @@
         <br><br>
 
         <select name="StudentGrade">
-            <option disabled="true" selected>-- Select Student Grade --</option>
+            <option disabled="true" selected>Select Grade</option>
             {% for grade in grds %}
             <option value="{{grade.gradeName}}">{{grade.gradeName}}</option>
             {% endfor %}
         </select>
         <br><br>
-        <input type="submit" name="AddStudent" value="Add">
+        <input type="submit" name="AddStudent" value="Add" class="button">
     </div>
 </form>
-<h1 style="text-align:center;">Update Student</h1>
-<form action="{% url 'studentForm' %}" method="post" style="height:700px;">{% csrf_token %}
+</div>
+<div style="float:left;margin:3%;">
+<h1 style="text-align:center;margin-left:40%;">Update Student</h1>
+<form action="{% url 'studentForm' %}" method="post" style="height:900px;">{% csrf_token %}
     <div style="padding:10% 30%">
         <label>Enter Student Name To Update:</label>
         <br><br>
-        <input type="text" name="UpdateStudentName" PLACEHOLDER="Enter Student Name">
-        <br><br>
+        <input type="text" name="UpdateStudentName" PLACEHOLDER="{{studentSearch}}" value="{{studentSearch}}">
+        <input type="submit" name="search" value="Search" class="button">
+        <br>
         <hr>
         <br>
         <label>Enter New Student Name:</label>
         <br><br>
-        <input type="text" name="NewStudentName" PLACEHOLDER="Enter Student Name">
-        <br><br>
+        <input type="text" name="NewStudentName" PLACEHOLDER="{{studentSearch}}">
+        <br>
         <hr>
         <br>
         <label> Enter New Student Birthdate:</label>
         <br><br>
-        <input type="date" name="NewStudentBirthdate">
-        <br><br>
+        <input type="date" name="NewStudentBirthdate" value="{{studentSearch.birthdate|date:'Y-m-d'}}">
+        <br>
         <hr>
         <br>
         <label>Enter New Student subject:</label>
         <br><br>
         <select name="NewStudentSubject">
-            <option disabled="true" selected>-- Select New Student Subject</option>
+            <option disabled="true" selected>Enter New Subject</option>
             {% for subject in subs %}
             <option>{{subject.subjectName}}</option>
             {% endfor %}
         </select>
         <!--<input type="text" name="NewStudentSubject" PLACEHOLDER="Enter Student Subject">-->
-        <br><br>
+        <br>
         <hr>
         <br>
         <label>Enter New Student Grade:</label>
         <br><br>
        <select name="NewStudentGrade">
-            <option disabled="true" selected>-- Select New Student Grade --</option>
+            <option disabled="true" selected>{{studentSearch.studentGrade}}</option>
             {% for grade in grds %}
             <option value="{{grade.gradeName}}">{{grade.gradeName}}</option>
             {% endfor %}
         </select>
         <!--<input type="text" name="NewStudentGrade" PLACEHOLDER="Enter Student Grade">-->
         <br><br>
-        <input type="submit" name="UpdateStudent" value="Update">
+        <input type="submit" name="UpdateStudent" value="Update" class="button">
     </div>
 </form>
+</div>
 {% endblock content %}

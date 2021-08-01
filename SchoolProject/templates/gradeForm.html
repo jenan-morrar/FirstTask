@@ -2,34 +2,61 @@
 
 {% block content %}
 <hr id="hLine">
-<h1 style="text-align:center;">Add Grade</h1>
-<form action="{% url 'gradeForm' %}" method="post">{% csrf_token %}
-    <div style="padding:10% 30%">
-        <label>Grade Name:</label>
-        <br><br>
-        <input type="text" name="GradeName" PLACEHOLDER="Enter Grade Name">
-        <br><br>
-        <input type="submit" name="AddGrade" value="Add">
-    </div>
-</form>
-<h1 style="text-align:center;">Update Grade</h1>
-<form action="{% url 'gradeForm' %}" method="post" style="height:400px;">{% csrf_token %}
-    <div style="padding:10% 30%">
-        <label>Enter Grade Name To Update:</label>
-        <br><br>
-        <input type="text" name="UpdateGradeName" PLACEHOLDER="Enter Grade Name" required>
-        <br><br>
-        <!--<input type="submit" name="search" value="Search">-->
-        <hr>
-        <br>
-        <label>Enter New Grade Name:</label>
-        <br><br>
-        <input type="text" name="NewGradeName" PLACEHOLDER=>
-        <br><br>
-        <input type="submit" name="UpdateGrade" value="Update">
-        {% if messages %}
-        <h3 style="color:green;">{{ messages }}</h3>
-        {% endif %}
-    </div>
-</form>
+{%for message in messages %}
+{%if "add" in message.tags %}
+<p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
+    {% if message.tags == "add success" %}
+    <i class="fa fa-check-circle" style="font-size:25px; color:green;"></i>
+    {% endif %}
+    {% if message.tags == "add error" %}
+    <i class="fa fa-close" style="font-size:25px;"></i>
+    {% endif %}
+    {{message}} </p> {# show signup error message #}
+{%endif%}
+{%endfor%}
+
+{%for message in messages %}
+{%if "update" in message.tags %}
+<p>{{message.tags}}</p>
+<p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
+    {% if message.tags == "add success" %}
+    <i class="fa fa-check-circle" style="font-size:25px; color:green;"></i>
+    {% endif %}
+    {% if message.tags == "add error" %}
+    <i class="fa fa-close" style="font-size:25px;"></i>
+    {% endif %}
+    {{message}} </p> {# show signup error message #}
+{%endif%}
+{%endfor%}
+
+<div style="float:left; margin:3%;">
+    <h1 style="text-align:center;margin-left:50%;">Add Grade</h1>
+    <form action="{% url 'gradeForm' %}" method="post" style="height:400px;">{% csrf_token %}
+        <div style="padding:10% 30%">
+            <label>Grade Name:</label>
+            <br><br>
+            <input type="text" name="GradeName" PLACEHOLDER="Enter Grade Name">
+            <br><br>
+            <input type="submit" name="AddGrade" value="Add" class="button">
+        </div>
+    </form>
+</div>
+<div style="float:left;margin:3%;">
+    <h1 style="text-align:center;margin-left:50%;">Update Grade</h1>
+    <form action="{% url 'gradeForm' %}" method="post" style="height:400px;">{% csrf_token %}
+        <div style="padding:10% 30%">
+            <label>Enter Grade Name To Update:</label>
+            <br><br>
+            <input type="text" name="UpdateGradeName" PLACEHOLDER="{{gradeSearch}}" value="{{gradeSearch}}" required>
+            <input type="submit" name="search" value="Search" class="button">
+            <hr>
+            <br>
+            <label>Enter New Grade Name:</label>
+            <br><br>
+            <input type="text" name="NewGradeName" PLACEHOLDER="{{gradeSearch}}">
+            <br><br>
+            <input type="submit" name="UpdateGrade" value="Update" class="button">
+        </div>
+    </form>
+</div>
 {% endblock content %}

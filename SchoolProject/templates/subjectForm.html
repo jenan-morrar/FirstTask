@@ -2,8 +2,36 @@
 
 {% block content %}
 <hr id="hLine">
-<h1 style="text-align:center;">Add Subject</h1>
-<form action="{% url 'subjectForm' %}" method="post" style="height:300px;">{% csrf_token %}
+{%for message in messages %}
+{%if "add" in message.tags %}
+<p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
+    {% if message.tags == "add success" %}
+    <i class="fa fa-check-circle" style="font-size:25px; color:green;"></i>
+    {% endif %}
+    {% if message.tags == "add error" %}
+    <i class="fa fa-close" style="font-size:25px;"></i>
+    {% endif %}
+    {{message}} </p> {# show signup error message #}
+{%endif%}
+{%endfor%}
+
+{%for message in messages %}
+{%if "update" in message.tags %}
+<p>{{message.tags}}</p>
+<p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
+    {% if message.tags == "add success" %}
+    <i class="fa fa-check-circle" style="font-size:25px; color:green;"></i>
+    {% endif %}
+    {% if message.tags == "add error" %}
+    <i class="fa fa-close" style="font-size:25px;"></i>
+    {% endif %}
+    {{message}} </p> {# show signup error message #}
+{%endif%}
+{%endfor%}
+
+<div style="float:left;margin:3%;">
+<h1 style="text-align:center;margin-left:50%;">Add Subject</h1>
+<form action="{% url 'subjectForm' %}" method="post" style="height:600px;">{% csrf_token %}
     <div style="padding:10% 30%">
         <label>Subject Name:</label>
         <br><br>
@@ -13,43 +41,45 @@
         <label>Subject ClassRoom:</label>
         <br><br>
         <select name="SubjectClassRoom">
-            <option disabled="true" selected>-- Select Subject ClassRoom --</option>
+            <option disabled="true" selected>Select ClassRoom</option>
             {% for room in clsRoom %}
             <option >{{room.classRoomName}}</option>
             {% endfor %}
         </select>
         <br><br>
-        <input type="submit" name="AddSubject" value="Add">
+        <input type="submit" name="AddSubject" value="Add" class="button">
     </div>
 </form>
-
-<h1 style="text-align:center;">Update Subject</h1>
-<form action="{% url 'subjectForm' %}" method="post" style="height:500px;">{% csrf_token %}
+</div>
+<div style="float:left;margin:3%;">
+<h1 style="text-align:center;margin-left:40%;">Update Subject</h1>
+<form action="{% url 'subjectForm' %}" method="post" style="height:600px;">{% csrf_token %}
     <div style="padding:10% 30%">
         <label>Enter Subject Name To Update:</label>
         <br><br>
-        <input type="text" name="UpdateSubjectName" PLACEHOLDER="Enter Subject Name">
-        <br><br>
+        <input type="text" name="UpdateSubjectName" PLACEHOLDER="{{subjectSearch}}" value="{{subjectSearch.subjectName}}">
+          <input type="submit" name="search" value="Search" class="button">
+        <br>
         <hr>
         <br>
         <label>Enter New Subject Name:</label>
         <br><br>
-        <input type="text" name="NewSubjectName" PLACEHOLDER="Enter Subject Name">
-        <br><br>
+        <input type="text" name="NewSubjectName" PLACEHOLDER="{{subjectSearch.subjectName}}">
+        <br>
         <hr>
         <br>
         <label>Enter New Subject ClassRoom:</label>
         <br><br>
         <select name="NewSubjectClassRoom">
-            <option disabled="true" selected>-- Select Subject ClassRoom --</option>
+            <option disabled="true" selected>{{subjectSearch.classRoomName}}</option>
             {% for room in clsRoom %}
             <option >{{room.classRoomName}}</option>
             {% endfor %}
         </select>
         <!--<input type="text" name="NewSubjectClassRoom" PLACEHOLDER="Enter ClassRoom">-->
         <br><br>
-
-        <input type="submit" name="UpdateSubject" value="Update">
+        <input type="submit" name="UpdateSubject" value="Update" class="button">
     </div>
 </form>
+</div>
 {% endblock content %}
