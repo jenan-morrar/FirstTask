@@ -1,9 +1,37 @@
 {%extends 'basis.html'%}
 
 {% block content %}
-<hr id="hLine">
-<h1 style="text-align:center;">Add Teacher</h1>
-<form action="{% url 'teacherForm' %}" method="post" style="height:300px;">{% csrf_token %}
+<hr>
+{%for message in messages %}
+{%if "add" in message.tags %}
+<p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
+    {% if message.tags == "add success" %}
+    <i class="fa fa-check-circle" style="font-size:25px; color:green;"></i>
+    {% endif %}
+    {% if message.tags == "add error" %}
+    <i class="fa fa-close" style="font-size:25px;"></i>
+    {% endif %}
+    {{message}} </p> {# show signup error message #}
+{%endif%}
+{%endfor%}
+
+{%for message in messages %}
+{%if "update" in message.tags %}
+<p>{{message.tags}}</p>
+<p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
+    {% if message.tags == "add success" %}
+    <i class="fa fa-check-circle" style="font-size:25px; color:green;"></i>
+    {% endif %}
+    {% if message.tags == "add error" %}
+    <i class="fa fa-close" style="font-size:25px;"></i>
+    {% endif %}
+    {{message}} </p> {# show signup error message #}
+{%endif%}
+{%endfor%}
+
+<div style="float:left;margin:3%;">
+<h1 style="text-align:center;margin-left:50%;">Add Teacher</h1>
+<form action="{% url 'teacherForm' %}" method="post" style="height:600px;">{% csrf_token %}
     <div style="padding:10% 30%">
         <label>Teacher Name:</label>
         <br><br>
@@ -13,38 +41,47 @@
         <br>
         <label>Teacher Subject:</label>
         <br><br>
-        <select name="StudentSubject">
-            <option disabled="true" selected>-- Select Student Subject</option>
+        <select name="TeacherSubjects">
+            <option disabled="true" selected>Select Subject</option>
             {% for subject in subs %}
             <option>{{subject.subjectName}}</option>
             {% endfor %}
         </select>
         <!--<input type="text" name="TeacherSubject" PLACEHOLDER="Enter Teacher Subject">-->
         <br><br>
-        <input type="submit" name="TeacherButton" value="Add">
+        <input type="submit" name="AddTeacher" value="Add" class="button">
     </div>
 </form>
-
-<h1 style="text-align:center;">Update Teacher</h1>
-<form action="{% url 'teacherForm' %}" method="post" style="height:500px;">{% csrf_token %}
+</div>
+<div style="float:left;margin:3%;">
+<h1 style="text-align:center;margin-left:40%;">Update Teacher</h1>
+<form action="{% url 'teacherForm' %}" method="post" style="height:600px;">{% csrf_token %}
     <div style="padding:10% 30%">
         <label>Enter Teacher Name To Update:</label>
         <br><br>
-        <input type="text" name="UpdateTeacherName" PLACEHOLDER="Enter Teacher Name">
-        <br><br>
+        <input type="text" name="UpdateTeacherName" PLACEHOLDER="{{teacherSearch}}" value="{{teacherSearch.teacherName}}">
+        <br>
+        <input type="submit" name="search" value="Search" class="button">
         <hr>
         <br>
         <label>Enter New Teacher Name:</label>
         <br><br>
-        <input type="text" name="NewTeacherName" PLACEHOLDER="Enter Teacher Name">
-        <br><br>
+        <input type="text" name="NewTeacherName" PLACEHOLDER="{{teacherSearch.teacherName}}" value="{{teacherSearch.teacherName}}">
+        <br>
         <hr>
         <br>
         <label>Enter New Teacher Subject:</label>
         <br><br>
-        <input type="text" name="NewTeacherSubject" PLACEHOLDER="Enter Teacher Subject">
+        <select name="NewTeacherSubject">
+            <option disabled="true" selected>Select New Subject</option>
+            {% for subject in subs %}
+            <option>{{subject.subjectName}}</option>
+            {% endfor %}
+        </select>
+        <!--<input type="text" name="NewTeacherSubject" PLACEHOLDER="Enter Teacher Subject">-->
         <br><br>
-        <input type="submit" name="UpdateTeacher" value="Update">
+        <input type="submit" name="UpdateTeacher" value="Update" class="button">
     </div>
 </form>
+</div>
 {% endblock content %}
