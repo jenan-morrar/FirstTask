@@ -1,7 +1,7 @@
 {%extends 'basis.html'%}
 
 {% block content %}
-<hr id="hLine">
+<hr>
 {%for message in messages %}
 {%if "add" in message.tags %}
 <p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
@@ -59,14 +59,14 @@
     <div style="padding:10% 30%">
         <label>Enter Teacher Name To Update:</label>
         <br><br>
-        <input type="text" name="UpdateTeacherName" PLACEHOLDER="{{teacherSearch}}" value="{{teacherSearch}}">
+        <input type="text" name="UpdateTeacherName" PLACEHOLDER="{{teacherSearch}}" value="{{teacherSearch.teacherName}}">
         <br>
         <input type="submit" name="search" value="Search" class="button">
         <hr>
         <br>
         <label>Enter New Teacher Name:</label>
         <br><br>
-        <input type="text" name="NewTeacherName" PLACEHOLDER="{{teacherSearch}}">
+        <input type="text" name="NewTeacherName" PLACEHOLDER="{{teacherSearch.teacherName}}" value="{{teacherSearch.teacherName}}">
         <br>
         <hr>
         <br>

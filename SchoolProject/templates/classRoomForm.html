@@ -1,7 +1,7 @@
 {%extends 'basis.html'%}
 
 {% block content %}
-<hr id="hLine">
+<hr>
 {%for message in messages %}
 {%if "add" in message.tags %}
 <p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
@@ -47,13 +47,13 @@
     <div style="padding:10% 30%">
         <label>Enter ClassRoom Name To Update:</label>
         <br><br>
-    <input type="text" name="UpdateRoomName" PLACEHOLDER="{{ClassRoomSearch}}" value="{{ClassRoomSearch}}" required>
+    <input type="text" name="UpdateRoomName" PLACEHOLDER="{{ClassRoomSearch}}" value="{{ClassRoomSearch.classRoomName}}" required>
         <input type="submit" name="search" value="Search" class="button">
         <br>
         <hr><br>
 <label>Enter New ClassRoom Name:</label>
         <br><br>
-    <input type="text" name="NewRoomName" PLACEHOLDER="{{ClassRoomSearch}}">
+    <input type="text" name="NewRoomName" PLACEHOLDER="{{ClassRoomSearch.classRoomName}}" value="{{ClassRoomSearch.classRoomName}}">
         <br><br>
     <input type="submit" name="UpdateClassRoom" value="Update" class="button">
     </div>

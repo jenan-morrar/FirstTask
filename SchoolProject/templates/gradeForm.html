@@ -1,7 +1,7 @@
 {%extends 'basis.html'%}
 
 {% block content %}
-<hr id="hLine">
+<hr>
 {%for message in messages %}
 {%if "add" in message.tags %}
 <p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
@@ -17,7 +17,6 @@
 
 {%for message in messages %}
 {%if "update" in message.tags %}
-<p>{{message.tags}}</p>
 <p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
     {% if message.tags == "add success" %}
     <i class="fa fa-check-circle" style="font-size:25px; color:green;"></i>
@@ -47,13 +46,13 @@
         <div style="padding:10% 30%">
             <label>Enter Grade Name To Update:</label>
             <br><br>
-            <input type="text" name="UpdateGradeName" PLACEHOLDER="{{gradeSearch}}" value="{{gradeSearch}}" required>
+            <input type="text" name="UpdateGradeName" PLACEHOLDER="{{gradeSearch}}" value="{{gradeSearch.gradeName}}" required>
             <input type="submit" name="search" value="Search" class="button">
             <hr>
             <br>
             <label>Enter New Grade Name:</label>
             <br><br>
-            <input type="text" name="NewGradeName" PLACEHOLDER="{{gradeSearch}}">
+            <input type="text" name="NewGradeName" PLACEHOLDER="{{gradeSearch.gradeName}}" value="{{gradeSearch.gradeName}}">
             <br><br>
             <input type="submit" name="UpdateGrade" value="Update" class="button">
         </div>
