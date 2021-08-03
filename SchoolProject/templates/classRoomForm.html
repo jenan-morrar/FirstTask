@@ -1,30 +1,62 @@
 {%extends 'basis.html'%}
 
 {% block content %}
-<hr id="hLine">
-<h1 style="text-align:center;">Add ClassRoom</h1>
-<form action="{% url 'classRoomForm' %}" method="post">{% csrf_token %}
+<hr>
+{%for message in messages %}
+{%if "add" in message.tags %}
+<p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
+    {% if message.tags == "add success" %}
+    <i class="fa fa-check-circle" style="font-size:25px; color:green;"></i>
+    {% endif %}
+    {% if message.tags == "add error" %}
+    <i class="fa fa-close" style="font-size:25px;"></i>
+    {% endif %}
+    {{message}} </p> {# show signup error message #}
+{%endif%}
+{%endfor%}
+
+{%for message in messages %}
+{%if "update" in message.tags %}
+<p>{{message.tags}}</p>
+<p {% if message.tags %} name="{{ message.tags }}" class="{{ message.tags }}" {% endif %}>
+    {% if message.tags == "add success" %}
+    <i class="fa fa-check-circle" style="font-size:25px; color:green;"></i>
+    {% endif %}
+    {% if message.tags == "add error" %}
+    <i class="fa fa-close" style="font-size:25px;"></i>
+    {% endif %}
+    {{message}} </p> {# show signup error message #}
+{%endif%}
+{%endfor%}
+
+<div style="float:left;margin:3%;">
+<h1 style="text-align:center;margin-left:50%;">Add ClassRoom</h1>
+<form action="{% url 'classRoomForm' %}" method="post" style="height:450px;">{% csrf_token %}
     <div style="padding:10% 30%">
 <label>ClassRoom Name:</label>
         <br><br>
     <input type="text" name="RoomName" PLACEHOLDER="Enter ClassRoom Name">
         <br><br>
-    <input type="submit" name="AddClassRoom" value="Add">
+    <input type="submit" name="AddClassRoom" value="Add" class="button">
     </div>
 </form>
-<h1 style="text-align:center;">Update ClassRoom</h1>
-<form action="{% url 'classRoomForm' %}" method="post" style="height:400px;">{% csrf_token %}
+</div>
+<div style="float:left;margin:3%;">
+<h1 style="text-align:center;margin-left:50%;">Update ClassRoom</h1>
+<form action="{% url 'classRoomForm' %}" method="post" style="height:450px;">{% csrf_token %}
     <div style="padding:10% 30%">
         <label>Enter ClassRoom Name To Update:</label>
         <br><br>
-    <input type="text" name="UpdateRoomName" PLACEHOLDER="Enter ClassRoom Name">
-        <br><br>
+    <input type="text" name="UpdateRoomName" PLACEHOLDER="{{ClassRoomSearch}}" value="{{ClassRoomSearch.classRoomName}}" required>
+        <input type="submit" name="search" value="Search" class="button">
+        <br>
         <hr><br>
 <label>Enter New ClassRoom Name:</label>
         <br><br>
-    <input type="text" name="NewRoomName" PLACEHOLDER="Enter ClassRoom Name">
+    <input type="text" name="NewRoomName" PLACEHOLDER="{{ClassRoomSearch.classRoomName}}" value="{{ClassRoomSearch.classRoomName}}">
         <br><br>
-    <input type="submit" name="UpdateClassRoom" value="Update">
+    <input type="submit" name="UpdateClassRoom" value="Update" class="button">
     </div>
 </form>
+</div>
 {% endblock content %}

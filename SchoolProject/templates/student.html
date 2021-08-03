@@ -15,7 +15,9 @@
     <td>{{stud.birthdate}}</td>
     <td>
       {% for subject in stud.studentSubjects.all %}
+      <br>
       {{subject.subjectName}}
+      <br>
       {% endfor %}
     </td>
     <td>
